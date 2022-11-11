@@ -25,7 +25,7 @@ const App = () => {
 
 
 
-    //retreiving the data
+
     useEffect(() =>{
         const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
 
@@ -34,10 +34,11 @@ const App = () => {
         }
     }, []);
 
-    //local storage DOM
-    useEffect(() => {
-        localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
 
+    useEffect(() => {
+        if (notes.length > 1){
+             localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
+        }
     }, [notes]);
 
     const addNote = (text) => {
